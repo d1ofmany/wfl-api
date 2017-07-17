@@ -1,0 +1,49 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger WFL
+  description: A WFL api
+
+produces:
+  - application/json
+
+definitions:
+  meal:
+    type: "object"
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        minLength: 3
+        pattern: "^[a-zA-Z0-9- ]+$"
+
+paths:
+  /meals:
+    get:
+      description: Returns all meal
+      operationId: "getMeals"
+      responses:
+        default:
+          description: Returns the matching meals
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/meal"
+  /meal/{id}:
+    get:
+      description: Returns meal matching id
+      operationId: "getMealById"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id that needs to be fetched."
+        required: true
+        type: "number"
+      responses:
+        default:
+          description: Returns the matching meal
+          schema:
+            type: object
+            items:
+              $ref: "#/definitions/meal"
