@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/db/Meal.js"],"names":["Meal","model","name","String"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,mBAASC,KAAT,CAAe,MAAf,EAAuB,EAAEC,MAAMC,MAAR,EAAvB,CAAb;;kBAEeH,I","file":"Meal.js","sourcesContent":["import mongoose from 'mongoose';\n\nconst Meal = mongoose.model('meal', { name: String });\n\nexport default Meal;\n"]}
