@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/d1ofmany/wfl-api#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "mongoose": "^4.11.3",
     "swagger-express-middleware": "^1.0.0-alpha.12"
   },
   "devDependencies": {

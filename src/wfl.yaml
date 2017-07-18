@@ -13,6 +13,8 @@ definitions:
     required:
       - name
     properties:
+      id:
+        type: string
       name:
         type: string
         minLength: 3
@@ -30,6 +32,24 @@ paths:
             type: array
             items:
               $ref: "#/definitions/meal"
+  /meal:
+    post:
+      description: Add new meal
+      operationId: "addMeal"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Meal object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/meal"
+      responses:
+        default:
+          description: Returns the matching meal
+          schema:
+            type: object
+            items:
+              $ref: "#/definitions/meal"
   /meal/{id}:
     get:
       description: Returns meal matching id
@@ -39,7 +59,44 @@ paths:
         in: "path"
         description: "The id that needs to be fetched."
         required: true
-        type: "number"
+        type: "string"
+      responses:
+        default:
+          description: Returns the matching meal
+          schema:
+            type: object
+            items:
+              $ref: "#/definitions/meal"
+    post:
+      description: Updates meal matching id
+      operationId: "updateMealById"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id of meal that needs to be updated"
+        required: true
+        type: "string"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the meal"
+        required: false
+        type: "string"
+      responses:
+        default:
+          description: Returns the matching meal
+          schema:
+            type: object
+            items:
+              $ref: "#/definitions/meal"
+    delete:
+      description: Deletes meal matching id
+      operationId: "deleteMealById"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id that needs to be fetched."
+        required: true
+        type: "string"
       responses:
         default:
           description: Returns the matching meal
